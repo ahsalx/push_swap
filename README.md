@@ -119,6 +119,6 @@ OK
 To visualize the same run with the Python visualizer:
 
 ```bash
-ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | python3 visualizer.py $ARG
+ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | ./dist/visualizer --delay 0.05 $ARG
 ```
 
