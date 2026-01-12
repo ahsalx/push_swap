@@ -1,92 +1,68 @@
-## 🧩 Project Description
+## Project Description
 
-The **push_swap** project is an algorithmic sorting challenge from the 42 curriculum.  
-You are given a set of integer values, two stacks, and a limited instruction set that can manipulate both stacks.  
-The goal is to sort the data using the fewest possible operations.
+This repository contains my implementation of the **push_swap** project from 42.  
+The goal of the project is to sort a list of integers using only two stacks (`a` and `b`) and a limited set of operations, while keeping the number of moves as small as possible.  
+The entire project is written in **C**.
 
----
-
-## 🛠 Programs
-
-This project consists of **two programs**, both written in **C**:
-
-- **checker**  
-  Takes integer arguments and reads instructions from standard input.  
-  After executing the instructions, it outputs:
-  - `OK` if the integers end up sorted
-  - `KO` otherwise
-
-- **push_swap**  
-  Takes integer arguments and outputs the smallest possible program (sequence of operations) that sorts them in ascending order using the push_swap instruction set.
+To make the behavior of the program easier to understand, I also created visual guides and tools that show what happens internally during the sorting process.
 
 ---
 
-## 🎯 Goal
+## Sorting Algorithms
 
-Sort all numbers in **ascending order** in stack `A` using stack `B` as an auxiliary workspace.
+I use two different strategies depending on the size of the input:
 
----
+### Small Inputs (≤ 5 numbers)
 
-## 🧱 Allowed Operations
+For small input sizes, I use a simple, hand-crafted sorting approach:
 
-sa - swap first two elements of A
-sb - swap first two elements of B
-ss - sa and sb simultaneously
+- For 2–3 numbers, I use a very small set of conditions and operations to sort them directly.
+- For 4–5 numbers, I use a `sort_small` function, which:
+  - pushes the smallest elements to stack `b`,
+  - sorts the remaining elements in stack `a`,
+  - then pushes the elements from `b` back to `a` in the correct order.
 
-pa - push top element of B to A
-pb - push top element of A to B
+This keeps the operation count low and is well suited for the small input constraints of the project.
 
-ra - rotate A (shift all elements up by 1)
-rb - rotate B
-rr - ra and rb simultaneously
+### Larger Inputs (Radix Sort)
 
-rra - reverse rotate A (shift all elements down by 1)
-rrb - reverse rotate B
-rrr - rra and rrb simultaneously
+For larger input sizes, I use a **binary radix sort** adapted to the push_swap rules:
 
+1. All values are first converted to **indices** (from `0` to `n - 1`) based on their sorted order.  
+2. The algorithm then processes the numbers **bit by bit**, from the least significant bit to the most significant:
+   - If the current bit of the number on top of `a` is `0`, it is pushed to stack `b`.
+   - If the bit is `1`, the number is rotated within stack `a`.
+3. After one full pass on a given bit, all elements from `b` are pushed back to `a`.
+4. This process is repeated for each bit until the stack is fully sorted.
 
----
-
-## 🧩 Data Structures
-
-Stacks and instructions are implemented using a **linked list** structure.
-
----
-
-## 🧠 Algorithmic Approach
-
-Different input sizes require different strategies.  
-This project uses **three algorithms** depending on the number of integers:
-
-### **1. `sort_three`**
-Sorts three values in fewer than 3 moves.  
-Simple because only `3 × 2` permutations exist.
+This gives an overall complexity of approximately `O(n * log n)`, which works well for the big test cases in the project.
 
 ---
 
-### **2. `sort_five`**
-Sorts five values typically in fewer than 11 moves.  
-Best case: **7 moves**.  
-Process:
-1. Find and push the smallest values to stack `B`
-2. Sort the remaining three values in stack `A` using `sort_three`
-3. Push smallest values back from `B` → `A` in correct order
+## Visual Guides and Function Trees
+
+To help other people understand how the program works internally, I added several visual elements to the project:
+
+- **Function call trees** that show what happens after each important function call.
+- **Step-by-step diagrams** that explain:
+  - how the arguments are parsed,
+  - how the stacks are built,
+  - how the small sort and radix sort behave,
+  - how the program reaches the final sorted state.
+
+These visuals act as a small guide for anyone reading the code or trying to learn the push_swap logic.
 
 ---
 
-### **3. `big_sort`**
-Used for larger input sizes.  
-This approach divides stack `A` into **chunks**:
+## Python Visualizer
 
-- ≤ 100 numbers → **5 chunks**
-- > 100 numbers → **10 chunks**
+I also created a **Python visualizer** that simulates the operations produced by `push_swap` and displays how the stacks change over time.
 
-Steps:
-1. Values are sorted into an array to determine chunk boundaries
-2. Chunks are pushed from `A` → `B`, smallest chunks first
-3. Once all values are in `B`, the largest elements are pushed back to `A`
-4. This continues until `B` is empty and `A` is fully sorted
+The visualizer:
 
-To optimize pushes back from `B` → `A`, a helper routine determines whether it's shorter to rotate using `rb` or reverse rotate using `rrb` to bring a target element to the top.
+- reads the list of operations generated by the `push_swap` program,
+- applies them step by step,
+- shows the content of stack `a` and stack `b` at each step,
+- allows you to see how the algorithm moves and sorts the numbers.
 
----
+I plan to record the visualizer in action and include it in the repository as a **GIF**, so people can watch the sorting process without having to run the visualizer themselves.
