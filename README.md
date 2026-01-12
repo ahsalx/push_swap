@@ -96,15 +96,29 @@ make
 ./push_swap [numbers...]
 ```
 
-### Test correctness using the 42 checker
-
-```bash
-./push_swap [numbers...] | ./checker [numbers...]
-```
-
 ### Use the Python visualizer
 
 ```bash
 ./push_swap [numbers...] | python3 visualizer.py [numbers...]
+```
+
+### Example (random 30 numbers)
+
+Generate 30 random numbers, run `push_swap`, and check correctness with the official checker:
+
+```bash
+ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | ./checker_linux $ARG
+```
+
+If the sequence of operations correctly sorts the numbers, the checker will print:
+
+```
+OK
+```
+
+To visualize the same run with the Python visualizer:
+
+```bash
+ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | python3 visualizer.py $ARG
 ```
 
