@@ -5,33 +5,7 @@
 
 **Push_Swap** is a sorting project from the 42 curriculum that focuses on designing an efficient, constraint-based sorting algorithm.  
 The challenge consists of sorting a list of integers using only a limited set of stack operations while minimizing the total number of moves.
-
-
-<p align="center">
-<i>## 📊 Visual Guides & Documentation
-
-To make the project easier to understand, I included:
-
--   stack state visuals
-    
--   ASCII trees for function call flow
-    
--   step-by-step execution diagrams
-    
-These help readers visualize what happens after each function call, including:
-
--   parsing
-    
--   validation
-    
--   stack building
-    
--   operation sequences
-    
--   final sorting result
-    
-
-This can serve as a quick learning guide for people studying Push_Swap or debugging their own implementations.
+ve as a quick learning guide for people studying Push_Swap or debugging their own implementations.
 </p>
 
 ## :rocket: Main Technologies ##
