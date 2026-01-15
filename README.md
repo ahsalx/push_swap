@@ -138,7 +138,7 @@ The visualizer simulates the operations produced by `push_swap` and displays how
 The ranking system used by the visualizer follows the scoring rules applied during push_swap evaluation at 42.
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/Visualizer.png" width="500">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/Visualizer.png" width="600">
 </p>
 
 Features:
