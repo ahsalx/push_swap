@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/Visualizer.gif" width="900">
+</p>
 # 🚀 push_swap — 42 Project
 
 This repository contains my implementation of the **push_swap** project from 42.
