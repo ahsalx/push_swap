@@ -1,154 +1,170 @@
-## Project Description
+# 🚀 push_swap — 42 Project
 
-This repository contains my implementation of the push_swap project from 42. The goal of the project is to sort a list of integers using only two stacks (a and b) and a limited set of operations, while keeping the number of moves as small as possible. The entire project is written in C.
+This repository contains my implementation of the **push_swap** project from 42.
 
-To make the behavior of the program easier to understand, I also created visual guides and tools that show what happens internally during the sorting process.
+The goal is to sort a list of integers using only two stacks (`a` and `b`) and a limited set of operations, while producing as few moves as possible. The entire project is written in **C**.
+
+To make the project easier to understand, I also created **visual guides** and a **visualizer tool** that show what happens internally during parsing, indexing, and sorting.
 
 ---
-### Parsing and Initial Setup
 
-We will use the following example input:
+## 📂 Visual Guides (Overview)
+
+To help readers understand the internal flow of the program, I added:
+
+- function call trees
+- step-by-step diagrams
+- argument parsing & validation
+- error handling logic
+- small sort and radix sort stages
+- visualizer playback
+
+These visuals act as a small guide for anyone reading the code or learning how push_swap works.
+
+---
+
+## 🧾 Parsing & Initial Setup
+
+Example input:
 
 ```bash
 ./push_swap 1 9 4
 ```
 
-The first function called in `main` is `parse_args`.
+parse_args:
 
-This function is responsible for:
-- validating the input values,
-- splitting quoted input (ex: `"1 56 89"`),
-- converting each string into a number (`atol_part1` → `atol_part2`),
-- creating a node for each number,
-- and placing those nodes into **stack A**.
-  
-<p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" style="max-width: 100%; width: 900px;">
-</p>
-
-
-If any step fails (invalid character, overflow, duplicate, etc.), the program calls `error_exit`, which prints an error message, frees all allocated memory, and terminates gracefully.
+- validates input
+- handles quoted input (ex: `"1 56 89"`)
+- converts tokens to numbers (`atol_part1 → atol_part2`)
+- allocates nodes
+- stores nodes in **Stack A**
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_failed.svg" style="max-width: 100%; width: 900px;">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" width="900">
 </p>
 
+---
 
+## ❗ Error Handling
 
+If validation fails:
 
-## Sorting Algorithms
+- invalid character
+- overflow / underflow
+- duplicate number
+- empty token
+- allocation failure
 
-I use two different strategies depending on the size of the input:
+Program calls `error_exit` which frees memory and terminates with `"Error"`.
 
-### Small Inputs (≤ 5 numbers)
-
-For small input sizes, I use a simple, hand-crafted sorting approach:
-
-- For 2–3 numbers, I use a small set of conditions and operations to sort them directly.
-- For 4–5 numbers, I use a sort_small function, which:
-  - pushes the smallest elements to stack b,
-  - sorts the remaining elements in stack a,
-  - then pushes the elements from b back to a in the correct order.
-
-This keeps the operation count low and is well suited for the small input constraints of the project.
-
-### Larger Inputs (Radix Sort)
-
-For larger input sizes, I use a binary radix sort adapted to the push_swap rules:
-
-1. All values are converted to indices (from 0 to n-1) based on their sorted order.
-2. The algorithm processes the numbers bit by bit, from the least significant bit to the most significant:
-   - If the current bit of the number on top of a is 0, it is pushed to stack b.
-   - If the bit is 1, the number is rotated within stack a.
-3. After one full pass on a given bit, all elements from b are pushed back to a.
-4. This process is repeated for each bit until the stack is fully sorted.
-
-This gives an overall complexity of approximately O(n * log n), which works well for the big test cases in the project.
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_failed.svg" width="900">
+</p>
 
 ---
 
-## Visual Guides and Function Trees
+## ✔ Already Sorted Case
 
-To help other people understand how the program works internally, I added several visual elements to the project:
+If stack A is already sorted, program frees memory and exits.
 
-- Function call trees that show what happens after each important function call.
-- Step-by-step diagrams that explain:
-  - how the arguments are parsed,
-  - how the stacks are built,
-  - how the small sort and radix sort behave,
-  - how the program reaches the final sorted state.
-
-These visuals act as a small guide for anyone reading the code or trying to learn the push_swap logic.
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/is_sroted.svg" width="900">
+</p>
 
 ---
 
-## Python Visualizer
+## 🧮 Indexing Stage
 
-I also created a Python visualizer that simulates the operations produced by push_swap and displays how the stacks change over time.
+Values are converted into sorted indices `0..n-1` to simplify later sorting.
 
-The visualizer:
+Example:
 
-- reads the list of operations generated by the push_swap program,
-- applies them step by step,
-- shows the content of stack a and stack b at each step,
-- allows you to see how the algorithm moves and sorts the numbers.
+```
+Input:   4  1  9
+Sorted:  1  4  9
+Index:   1  0  2
+```
 
-I plan to record the visualizer in action and include it in the repository as a GIF so people can watch the sorting process without having to run the visualizer themselves.
-
----
-
-## Programs
-
-This project works with three programs/tools:
-
-### push_swap (mandatory)
-The main project program. It receives a list of integers and outputs the operations needed to sort them.
-
-### checker (provided by 42)
-Used to verify whether the sequence of operations generated by push_swap correctly sorts the input.
-
-### visualizer.py (custom)
-Python script that replays the operations produced by push_swap and visualizes how the values move between stack a and stack b.
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/indexing_the_stack.svg" width="900">
+</p>
 
 ---
 
-## Usage
+## 🧩 Small Input Strategy (≤ 5 numbers)
 
-### Compile
+Used instead of radix for small stacks:
+
+- `size == 2` → `sa`
+- `size == 3` → `sort_three`
+- `size == 4` → `push_min_to_b`, `sort_three`, `pa`
+- `size == 5` → `push_min_to_b` x2, `sort_three`, `pa` x2
+
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/sorting.svg" width="900">
+</p>
+
+---
+
+## ⚙️ Larger Inputs (Radix Sort)
+
+For large inputs, binary radix sort is used:
+
+1. values converted to indices
+2. process bits LSB → MSB
+3. bit = `0` → `pb`
+4. bit = `1` → `ra`
+5. after each pass → `pa` all back
+6. repeat until sorted
+
+This provides a complexity of approximately `O(n log n)`.
+
+For visual understanding, see resources below.
+
+---
+
+## 🎥 push_swap Visualizer
+
+The visualizer simulates the operations produced by push_swap and displays how stacks evolve over time.
+
+Features:
+
+- reads push_swap operations
+- executes them step-by-step
+- shows both stacks
+- displays final result
+- GIF demo planned
+
+Usage:
+
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
+```
+
+---
+
+## 🔧 Building
+
+Compile:
 
 ```bash
 make
 ```
 
-### Run push_swap
+Run:
 
 ```bash
 ./push_swap [numbers...]
 ```
 
-### Use the Python visualizer
+---
 
-```bash
-./push_swap [numbers...] | python3 visualizer.py [numbers...]
-```
+## 📚 Resources
 
-### Example (random 30 numbers)
+Visual explanation tools & references:
 
-Generate 30 random numbers, run `push_swap`, and check correctness with the official checker:
-
-```bash
-ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | ./checker_linux $ARG
-```
-
-If the sequence of operations correctly sorts the numbers, the checker will print:
-
-```
-OK
-```
-
-To visualize the same run with the Python visualizer:
-
-```bash
-ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ') && ./push_swap $ARG | ./dist/visualizer --delay 0.05 $ARG
-```
-
+- https://vscza.itch.io/push-swap
+- https://www.youtube.com/watch?v=mVRHvZF8xtg
+- https://www.youtube.com/watch?v=dPwAA7j-8o4
+- https://en.wikipedia.org/wiki/Radix_sort
+- https://en.wikipedia.org/wiki/Stack_(abstract_data_type)
