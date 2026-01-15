@@ -122,6 +122,21 @@ This provides a complexity of approximately `O(n log n)`.
 For visual understanding, see resources below.
 
 ---
+## 🔧 Building
+
+Compile:
+
+```bash
+make
+```
+
+Run:
+
+```bash
+./push_swap [numbers...]
+```
+
+---
 
 ## 🎥 push_swap Visualizer
 
@@ -156,22 +171,6 @@ A dedicated README for the visualizer is available in:
 ```
 visualizer/
 ```
-
-## 🔧 Building
-
-Compile:
-
-```bash
-make
-```
-
-Run:
-
-```bash
-./push_swap [numbers...]
-```
-
----
 
 ## 📚 Resources
 
