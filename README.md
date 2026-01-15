@@ -23,9 +23,8 @@ This function is responsible for:
 - and placing those nodes into **stack A**.
   
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" width="600">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" width="100%">
 </p>
-
 
 
 If any step fails (invalid character, overflow, duplicate, etc.), the program calls `error_exit`, which prints an error message, frees all allocated memory, and terminates gracefully.
