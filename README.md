@@ -124,6 +124,11 @@ For visual understanding, see resources below.
 ---
 ## 🔧 Building
 
+Clone the repository:
+
+```bash
+git clone https://github.com/ahmedbsalah/push_swap.git
+```
 Compile:
 
 ```bash
@@ -176,7 +181,7 @@ visualizer/
 
 Visual explanation tools & references:
 
-- https://vscza.itch.io/push-swap — interactive push_swap game to understand the allowed operations
+- https://vscza.itch.io/push-swap — interactive push_swap game by vscza to understand the allowed operations
 - https://www.youtube.com/watch?v=mVRHvZF8xtg — radix sort visualization
 - https://www.youtube.com/watch?v=dPwAA7j-8o4 — radix sorting explanation (intro to parallel programming)
 - https://en.wikipedia.org/wiki/Radix_sort — radix algorithm reference
