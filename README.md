@@ -23,7 +23,7 @@ This function is responsible for:
 - and placing those nodes into **stack A**.
   
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" width="100%">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" style="max-width: 100%; width: 900px;">
 </p>
 
 
