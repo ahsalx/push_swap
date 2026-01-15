@@ -29,7 +29,9 @@ This function is responsible for:
 
 If any step fails (invalid character, overflow, duplicate, etc.), the program calls `error_exit`, which prints an error message, frees all allocated memory, and terminates gracefully.
 
-( insert error tree image here )
+<p align="center">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_failed.svg" style="max-width: 100%; width: 900px;">
+</p>
 
 
 
