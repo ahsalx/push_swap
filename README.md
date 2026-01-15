@@ -21,8 +21,10 @@ This function is responsible for:
 - converting each string into a number (`atol_part1` → `atol_part2`),
 - creating a node for each number,
 - and placing those nodes into **stack A**.
-
-( insert parsing tree image here )
+  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ahmedbsalah/push_swap/main/SVG/pares_args.svg" width="600">
+</p>
 
 If any step fails (invalid character, overflow, duplicate, etc.), the program calls `error_exit`, which prints an error message, frees all allocated memory, and terminates gracefully.
 
