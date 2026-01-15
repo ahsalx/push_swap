@@ -68,7 +68,7 @@ Program calls `error_exit` which frees memory and terminates with `"Error"`.
 If stack A is already sorted, program frees memory and exits.
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/is_sorted.svg" width="700">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/is_sorted.svg" width="900">
 </p>
 
 ---
