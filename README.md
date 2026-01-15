@@ -40,7 +40,7 @@ parse_args:
 - stores nodes in **Stack A**
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_args.svg" width="900">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/pares_args.svg" width="900">
 </p>
 
 ---
@@ -58,7 +58,7 @@ If validation fails:
 Program calls `error_exit` which frees memory and terminates with `"Error"`.
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/pares_failed.svg" width="900">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/pares_failed.svg" width="900">
 </p>
 
 ---
@@ -68,7 +68,7 @@ Program calls `error_exit` which frees memory and terminates with `"Error"`.
 If stack A is already sorted, program frees memory and exits.
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/is_sorted.svg" width="700">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/is_sorted.svg" width="700">
 </p>
 
 ---
@@ -86,7 +86,7 @@ Index:   1  0  2
 ```
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/indexing_the_stack.svg" width="900">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/indexing_the_stack.svg" width="900">
 </p>
 
 ---
@@ -101,7 +101,7 @@ Used instead of radix for small stacks:
 - `size == 5` → `push_min_to_b` x2, `sort_three`, `pa` x2
 
 <p align="center">
-  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/SVG/sorting.svg" width="900">
+  <img src="https://github.com/ahmedbsalah/push_swap/raw/main/Media/sorting.svg" width="900">
 </p>
 
 ---
