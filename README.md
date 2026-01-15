@@ -5,6 +5,31 @@ This repository contains my implementation of the push_swap project from 42. The
 To make the behavior of the program easier to understand, I also created visual guides and tools that show what happens internally during the sorting process.
 
 ---
+### Parsing and Initial Setup
+
+We will use the following example input:
+
+```bash
+./push_swap 1 9 4
+```
+
+The first function called in `main` is `parse_args`.
+
+This function is responsible for:
+- validating the input values,
+- splitting quoted input (ex: `"1 56 89"`),
+- converting each string into a number (`atol_part1` → `atol_part2`),
+- creating a node for each number,
+- and placing those nodes into **stack A**.
+
+( insert parsing tree image here )
+
+If any step fails (invalid character, overflow, duplicate, etc.), the program calls `error_exit`, which prints an error message, frees all allocated memory, and terminates gracefully.
+
+( insert error tree image here )
+
+
+
 
 ## Sorting Algorithms
 
