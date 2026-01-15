@@ -8,22 +8,7 @@ This repository contains my implementation of the **push_swap** project from 42.
 
 The goal is to sort a list of integers using only two stacks (`a` and `b`) and a limited set of operations, while producing as few moves as possible. The entire project is written in **C**.
 
-To make the project easier to understand, I also created **visual guides** and a **visualizer tool** that show what happens internally during parsing, indexing, and sorting.
-
----
-
-## 📂 Visual Guides (Overview)
-
-To help readers understand the internal flow of the program, I added:
-
-- function call trees
-- step-by-step diagrams
-- argument parsing & validation
-- error handling logic
-- small sort and radix sort stages
-- visualizer playback
-
-These visuals act as a small guide for anyone reading the code or learning how push_swap works.
+To make the project easier to understand, I created visual guides and a visualizer tool that show what happens internally during parsing, indexing, and sorting. These visuals act as a small guide for anyone reading the code or learning how `push_swap` works.
 
 ---
 
@@ -150,6 +135,7 @@ Run:
 ## 🎥 push_swap Visualizer
 
 The visualizer simulates the operations produced by `push_swap` and displays how stacks evolve over time.
+The ranking system used by the visualizer follows the scoring rules applied during push_swap evaluation at 42.
 
 Features:
 
@@ -157,7 +143,6 @@ Features:
 - executes them step-by-step
 - shows both stacks
 - displays final result
-- GIF demo planned
 
 Usage:
 
