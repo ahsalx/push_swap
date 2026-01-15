@@ -125,7 +125,7 @@ For visual understanding, see resources below.
 
 ## 🎥 push_swap Visualizer
 
-The visualizer simulates the operations produced by push_swap and displays how stacks evolve over time.
+The visualizer simulates the operations produced by `push_swap` and displays how stacks evolve over time.
 
 Features:
 
@@ -142,6 +142,20 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
 ```
 
 ---
+
+Delay flag (speed up or slow down the animation):
+
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG --delay 0.05
+```
+
+---
+
+A dedicated README for the visualizer is available in:
+
+```
+visualizer/
+```
 
 ## 🔧 Building
 
