@@ -1,49 +1,67 @@
-=== Push_Swap Visualizer ===
+## 🎥 Push_Swap Visualizer
 
-This visualizer shows how push_swap operations move values between stack A and stack B.
+This visualizer shows how `push_swap` operations move values between Stack A and Stack B.
 
+---
 
-- Usage:
+### 📌 Usage
 
-Pipe the output of push_swap into the visualizer:
+Pipe the output of `push_swap` into the visualizer:
 
-    $> ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
+```
 
+---
 
-- Delay:
+### ⏱ Delay
 
 You can adjust the animation speed using:
 
-    --delay <seconds>
+```
+--delay <seconds>
+```
 
 Example:
 
-    $> ./push_swap 4 1 9 3 | ./visualizer 4 1 9 3 --delay 0.05
+```bash
+./push_swap 4 1 9 3 | ./visualizer 4 1 9 3 --delay 0.05
+```
 
-(Default delay = 0.3 seconds)
+(Default delay = `0.3` seconds)
 
+---
 
-- Examples:
+### 🎲 Examples
 
 Random 30 numbers:
 
-    $> ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ')
-    $> ./push_swap $ARG | ./visualizer $ARG
+```bash
+ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ')
+./push_swap $ARG | ./visualizer $ARG
+```
 
 Random 30 numbers (faster delay):
 
-    $> ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ')
-    $> ./push_swap $ARG | ./visualizer $ARG --delay 0.05
+```bash
+ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ')
+./push_swap $ARG | ./visualizer $ARG --delay 0.05
+```
 
 Random 500 numbers:
 
-    $> ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
-    $> ./push_swap $ARG | ./visualizer $ARG
+```bash
+ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
+./push_swap $ARG | ./visualizer $ARG
+```
 
+---
 
-- Notes:
+### 📝 Notes
 
-- Requires push_swap output on stdin
-- Numbers must be passed again to the visualizer on argv
-- The displayed score is based on the official 42 evaluation sheet
-- Press Ctrl+C to quit
+- expects `push_swap` operations on `stdin`
+- stack values must be passed again on `argv`
+- score shown corresponds to 42 push_swap evaluation rules
+- exit with `Ctrl + C`
+- if you get `Error` or `0 operations`, run `make fclean && make` and retry
+- note: `0 operations` may also mean the input was already sorted
