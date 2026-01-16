@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 13:12:16 by aben-sal          #+#    #+#             */
-/*   Updated: 2026/01/14 18:25:34 by aben-sal         ###   ########.fr       */
+/*   Updated: 2026/01/16 11:37:53 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,16 @@ static void	fill_array(t_node *a, int *arr, int size)
 static void	simple_sort(int *arr, int size)
 {
 	int	i;
-	int	j;
 	int	tmp;
 
 	i = 0;
 	while (i < size - 1)
 	{
-		j = i + 1;
-		while (j < size)
+		if (arr[i] > arr[i + 1])
 		{
-			if (arr[j] < arr[i])
-			{
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
-			}
-			j++;
+			tmp = arr[i];
+			arr[i] = arr[i + 1];
+			arr[i + 1] = tmp;
 		}
 		i++;
 	}
