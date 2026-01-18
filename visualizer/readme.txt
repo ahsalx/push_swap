@@ -1,6 +1,6 @@
 ## 🎥 Push_Swap Visualizer
 
-This visualizer shows how `push_swap` operations move values between Stack A and Stack B.
+This visualizer shows how `push_swap` operations move values between Stack A and Stack B in real-time with animation, colors, and evaluation.
 
 ---
 
@@ -18,17 +18,17 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
 
 You can adjust the animation speed using:
 
-```
---delay <seconds>
+```bash
+-d <seconds>
 ```
 
 Example:
 
 ```bash
-./push_swap 4 1 9 3 | ./visualizer 4 1 9 3 --delay 0.05
+./push_swap 4 1 9 3 | ./visualizer -d 0.05
 ```
 
-(Default delay = `0.3` seconds)
+(Default delay = `0.12` seconds)
 
 ---
 
@@ -45,7 +45,7 @@ Random 30 numbers (faster delay):
 
 ```bash
 ARG=$(shuf -i 0-9999 -n 30 | tr '\n' ' ')
-./push_swap $ARG | ./visualizer $ARG --delay 0.05
+./push_swap $ARG | ./visualizer -d 0.05 $ARG
 ```
 
 Random 500 numbers:
@@ -61,7 +61,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 
 - expects `push_swap` operations on `stdin`
 - stack values must be passed again on `argv`
-- score shown corresponds to 42 push_swap evaluation rules
+- evaluation uses 42 push_swap scoring rules (100 & 500 numbers)
 - exit with `Ctrl + C`
-- if you get `Error` or `0 operations`, run `make fclean && make` and retry
-- note: `0 operations` may also mean the input was already sorted
+- `Error` means invalid instruction
+- `0 operations` may also mean the input was already sorted

@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 13:12:16 by aben-sal          #+#    #+#             */
-/*   Updated: 2026/01/16 11:37:53 by aben-sal         ###   ########.fr       */
+/*   Updated: 2026/01/18 14:23:51 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static void	simple_sort(int *arr, int size)
 			tmp = arr[i];
 			arr[i] = arr[i + 1];
 			arr[i + 1] = tmp;
+			i = 0;
 		}
+		else
 		i++;
 	}
 }
@@ -59,9 +61,8 @@ static int	find_index(int *arr, int size, int value)
 
 void	index_stack(t_node *a)
 {
-	int		size;
-	int		*arr;
-	t_node	*tmp;
+	int	size;
+	int	*arr;
 
 	size = stack_size(a);
 	arr = malloc(sizeof(int) * size);
@@ -69,11 +70,10 @@ void	index_stack(t_node *a)
 		error_exit(&a, NULL);
 	fill_array(a, arr, size);
 	simple_sort(arr, size);
-	tmp = a;
-	while (tmp)
+	while (a)
 	{
-		tmp->index = find_index(arr, size, tmp->value);
-		tmp = tmp->next;
+		a->index = find_index(arr, size, a->value);
+		a = a->next;
 	}
 	free(arr);
 }

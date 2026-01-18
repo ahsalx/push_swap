@@ -6,7 +6,7 @@
 /*   By: aben-sal <aben-sal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 13:12:12 by aben-sal          #+#    #+#             */
-/*   Updated: 2026/01/16 11:37:59 by aben-sal         ###   ########.fr       */
+/*   Updated: 2026/01/18 14:13:07 by aben-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	sort_three(t_node **a)
 	int	first;
 	int	second;
 	int	third;
-
+	
 	first = (*a)->index;
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;
