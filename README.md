@@ -159,7 +159,7 @@ ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG
 Delay flag (speed up or slow down the animation):
 
 ```bash
-ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG --delay 0.05
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./visualizer $ARG -d 0.05
 ```
 
 ---
